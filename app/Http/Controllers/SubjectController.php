@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\KillSystem;
 use App\Models\Lecturer;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+    public function __construct(){
+
+    }
     /**
      * Display a listing of the resource.
      */

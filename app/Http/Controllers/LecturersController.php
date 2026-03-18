@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lecturer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LecturersController extends Controller
@@ -17,6 +18,8 @@ class LecturersController extends Controller
     }
 
     public function store(Request $request){
+
+
         $lecturer = new Lecturer();
         $lecturer->name=$request->name;
         $lecturer->surname=$request->surname;
