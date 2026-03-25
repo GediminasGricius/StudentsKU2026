@@ -14,6 +14,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/setLanguage/{lang}', [App\Http\Controllers\LangController::class, 'setLanguage'])->name('setLanguage');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lecturers', [LecturersController::class,'index'])->name('lecturers.index');
     Route::resource('subjects', SubjectController::class)->only(['index']);
@@ -27,13 +29,5 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/lecturers/{lecturer}', [LecturersController::class,'update'])->name('lecturers.update');
         Route::get('/lecturers/{lecturer}/delete', [LecturersController::class,'delete'])->name('lecturers.delete');
      });
-
-
-
-
-
-
-
-
 
 });

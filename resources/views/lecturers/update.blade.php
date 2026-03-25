@@ -13,11 +13,11 @@
                        @method('put')
 
                        <div class="mb-3">
-                           <label class="form-label">Name:</label>
+                           <label class="form-label">{{ __('lecturers.name') }}:</label>
                            <input class="form-control" type="text" name="name" value="{{ $lecturer->name }}">
                        </div>
                        <div class="mb-3">
-                           <label class="form-label">Surname:</label>
+                           <label class="form-label">{{ __('lecturers.surname') }}:</label>
                            <input class="form-control" type="text" name="surname" value="{{ $lecturer->surname }}">
                        </div>
                        <div class="mb-3">

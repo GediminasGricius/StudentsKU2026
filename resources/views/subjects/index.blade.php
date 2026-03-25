@@ -5,22 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Lecturers</div>
+                <div class="card-header">{{ __('Subjects') }}</div>
 
                 <div class="card-body">
                     @if (Auth::user()->type=='admin')
-                         <a href="{{ route('subjects.create') }}" class="btn btn-success float-end">Add new Subject</a>
+                         <a href="{{ route('subjects.create') }}" class="btn btn-success float-end">{{ __('Add new Subject') }}</a>
                     @endif
                     <hr class="mt-5">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Semester</th>
-                                <th>Lecturer</th>
+                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('Description') }}</th>
+                                <th>{{ __('Semester') }}</th>
+                                <th>{{ __('Lecturer') }}</th>
                                 @if (Auth::user()->type=='admin')
-                                    <th>Actions</th>
+                                    <th>{{ __('Actions') }}</th>
                                 @endif
                             </tr>
                         </thead>

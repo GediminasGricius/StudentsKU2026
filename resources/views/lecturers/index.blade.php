@@ -5,24 +5,25 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Lecturers</div>
+                <div class="card-header">{{ __('lecturers.lecturers') }}</div>
 
                 <div class="card-body">
                     @if (Auth::user()->type=='admin')
-                        <a href="{{ route('lecturers.create') }}" class="btn btn-success float-end">Add new Lecturer</a>
+                        <a href="{{ route('lecturers.create') }}" class="btn btn-success float-end">{{ __('lecturers.add_new') }}</a>
                     @endif
                     <hr class="mt-5">
+
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Birth date</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Subjects</th>
+                                <th>{{ __('lecturers.name') }}</th>
+                                <th>{{ __('lecturers.surname') }}</th>
+                                <th>{{ __('lecturers.birth_date') }}</th>
+                                <th>{{ __('lecturers.phone') }}</th>
+                                <th>{{ __('lecturers.email') }}</th>
+                                <th>{{ __('lecturers.subjects') }}</th>
                                 @if (Auth::user()->type=='admin')
-                                    <th>Actions</th>
+                                    <th>{{ __('lecturers.actions') }}</th>
                                 @endif
                             </tr>
                         </thead>
@@ -42,8 +43,8 @@
                                 </td>
                                 @if (Auth::user()->type=='admin')
                                 <td>
-                                    <a href="{{ route('lecturers.edit', $lecturer->id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('lecturers.delete', $lecturer->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('lecturers.edit', $lecturer->id) }}" class="btn btn-info">{{ __('lecturers.edit') }}</a>
+                                    <a href="{{ route('lecturers.delete', $lecturer->id) }}" class="btn btn-danger">{{ __('lecturers.delete') }}</a>
                                 </td>
                                 @endif
                             </tr>
