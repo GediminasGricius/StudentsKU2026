@@ -20,6 +20,18 @@ class LecturersController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate(
+            [
+                'name' => 'required|max:60',
+                'surname' => 'required|max:60',
+                'email' => 'required|email|unique:lecturers',
+            ],[
+                'name' => __('Name is required and must be no longer than 60 characters'),
+                'surname.required' => __('Surname is required'),
+                'surname.max' => __('Surname must be no longer than 60 characters'),
+
+            ]
+        );
 
 
         $lecturer = new Lecturer();

@@ -4,6 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <div>
+                            {{  $error }}
+                        </div>
+                    @endforeach
+                </div>
+
+            @endif
             <div class="card">
                 <div class="card-header">New Subject</div>
 

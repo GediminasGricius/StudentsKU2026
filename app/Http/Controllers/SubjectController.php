@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\KillSystem;
+use App\Http\Requests\SubjectRequest;
 use App\Models\Lecturer;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -33,8 +34,9 @@ class SubjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SubjectRequest $request)
     {
+        $request->validate();
         Subject::create($request->all());
         return redirect()->route('subjects.index');
     }
@@ -59,8 +61,10 @@ class SubjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Subject $subject)
+    public function update(SubjectRequest $request, Subject $subject)
     {
+        $request->validate();
+
         $subject->update($request->all());
         $subject->save();
         return redirect()->route('subjects.index');
