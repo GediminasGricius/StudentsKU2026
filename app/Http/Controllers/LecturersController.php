@@ -60,6 +60,12 @@ class LecturersController extends Controller
         $lecturer->birthday=$request->birthday;
         $lecturer->save();
 
+        if ($request->hasFile('photo')){
+            $request->file('photo')->store('/public');
+            $lecturer->photo=$request->file('photo')->hashName();
+            $lecturer->save();
+        }
+
         return redirect()->route('lecturers.index');
     }
 
@@ -67,5 +73,18 @@ class LecturersController extends Controller
         $lecturer=Lecturer::find($id);
         $lecturer->delete();
         return redirect()->route('lecturers.index');
+    }
+
+    public function  deletePhoto($id)
+    {
+        $lecturer=Lecturer::find($id);
+        if ($lecturer->photo!=null) {
+            unlink(storage_path().'/app/public/'.$lecturer->photo);
+            $lecturer->photo=null;
+            $lecturer->save();
+        }
+        return redirect()->back();
+
+
     }
 }

@@ -16,6 +16,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>{{ __('lecturers.name') }}</th>
                                 <th>{{ __('lecturers.surname') }}</th>
                                 <th>{{ __('lecturers.birth_date') }}</th>
@@ -23,13 +24,18 @@
                                 <th>{{ __('lecturers.email') }}</th>
                                 <th>{{ __('lecturers.subjects') }}</th>
                                 @if (Auth::user()->type=='admin')
-                                    <th>{{ __('lecturers.actions') }}</th>
+                                    <th style="width: 150px;">{{ __('lecturers.actions') }}</th>
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($lecturers as $lecturer)
                             <tr>
+                                <td>
+                                    @if ($lecturer->photo!=null)
+                                        <img src="/storage/{{ $lecturer->photo }}" alt="" style="width:200px;">
+                                    @endif
+                                </td>
                                 <td>{{ $lecturer->name }}</td>
                                 <td>{{ $lecturer->surname }}</td>
                                 <td>{{ $lecturer->birthday }}</td>

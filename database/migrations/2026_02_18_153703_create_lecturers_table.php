@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone', 32)->nullable()->default(null);
             $table->string('email')->nullable()->default(null);
             $table->date('birthday')->nullable()->default(null);
+
             $table->timestamps();
         });
     }
