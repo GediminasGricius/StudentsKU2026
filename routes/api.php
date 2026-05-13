@@ -17,4 +17,4 @@ Route::put('/lecturers/{id}', [LecturersAPIController::class, 'update']);
 Route::delete('/lecturers/{id}', [LecturersAPIController::class, 'destroy']);
 
 
-Route::resource('subjects', SubjectsAPIController::class)->only('index','show', 'store', 'update', 'destroy');
+Route::resource('api.subjects', SubjectsAPIController::class)->only('index','show', 'store', 'update', 'destroy');

@@ -33,8 +33,13 @@
                                 <td>{{ $subject->lecturer->name }} {{ $subject->lecturer->surname }}</td>
                                 @if (Auth::user()->type=='admin')
                                 <td>
-                                    <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-info">Edit</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
+                                    @can('update', $subject)
+                                        <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-info">Edit</a>
+                                    @endcan
+
+                                    @can('delete', $subject)
+                                        <a href="#" class="btn btn-danger">Delete</a>
+                                    @endcan
                                 </td>
                                 @endif
                             </tr>

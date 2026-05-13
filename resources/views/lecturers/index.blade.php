@@ -8,9 +8,9 @@
                 <div class="card-header">{{ __('lecturers.lecturers') }}</div>
 
                 <div class="card-body">
-                    @if (Auth::user()->type=='admin')
+
                         <a href="{{ route('lecturers.create') }}" class="btn btn-success float-end">{{ __('lecturers.add_new') }}</a>
-                    @endif
+                    
                     <hr class="mt-5">
 
                     <table class="table">
@@ -47,12 +47,14 @@
 
                                     @endforeach
                                 </td>
-                                @if (Auth::user()->type=='admin')
+
                                 <td>
                                     <a href="{{ route('lecturers.edit', $lecturer->id) }}" class="btn btn-info">{{ __('lecturers.edit') }}</a>
-                                    <a href="{{ route('lecturers.delete', $lecturer->id) }}" class="btn btn-danger">{{ __('lecturers.delete') }}</a>
+                                    @can("deleteLecturer", $lecturer)
+                                        <a href="{{ route('lecturers.delete', $lecturer->id) }}" class="btn btn-danger">{{ __('lecturers.delete') }}</a>
+                                    @endcan
                                 </td>
-                                @endif
+
                             </tr>
                             @endforeach
                         </tbody>

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class SubjectController extends Controller
 {
     public function __construct(){
+        $this->authorizeResource(Subject::class);
 
     }
     /**
@@ -36,8 +37,10 @@ class SubjectController extends Controller
      */
     public function store(SubjectRequest $request)
     {
-        $request->validate();
-        Subject::create($request->all());
+
+        $subject=Subject::create($request->all());
+        $subject->user_id=$request->user()->id;
+        $subject->save();
         return redirect()->route('subjects.index');
     }
 
